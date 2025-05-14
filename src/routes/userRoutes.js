@@ -4,7 +4,7 @@ import {verifyUserInputs} from '../middleware/verifyUserCredentials.js'
 
 const routes=express.Router()
 
-routes.post('/register-user',verifyUserInputs,registerUser)
-routes.post('/login-user',loginUser)
+routes.post('/register',verifyUserInputs,registerUser)
+routes.post('/login',loginUser)
 
 export default routes

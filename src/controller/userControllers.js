@@ -9,8 +9,8 @@ const registerUser=async(req,res)=> {
     try {
         const {name,email,role}=req.body;
         const totalValue=await prisma.user.count()
-        const username=name.split(' ').join('')+"User"+totalValue
-        const password=generatePassword.generate({
+        const username=name.split(' ').join('').toLowerCase()+"user"+totalValue
+        const password="user"+generatePassword.generate({
             length:8,
             numbers:true,
             lowercase:true,
@@ -49,7 +49,7 @@ const loginUser=async (req,res)=> {
         if(!user || !await bcrypt.compare(password,user.password)) {
             return res.status(404).json({status:'error',message:'Invalid credentials'})
         }
-        const token=jwt.sign({id:user.id,role:user.role},process.env.JWT_SECRET,{expiresIn:'1h'})
+        const token=jwt.sign({id:user.id,role:user.role,name:user.name,email:user.email},process.env.JWT_SECRET,{expiresIn:'1h'})
 
         return res.status(200).json({status:'success',message:'login successfull',token})
 

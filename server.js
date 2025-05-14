@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import dbConnection from './src/db.js'
 import userRoutes from './src/routes/userRoutes.js'
+import cors from 'cors'
 
 const app=express()
 
@@ -12,6 +13,7 @@ const PORT=process.env.PORT
 dbConnection()
 
 app.use(express.json())
+app.use(cors({origin:"*"}))
 
 app.get('/',(req,res)=> {
     try {
@@ -21,7 +23,7 @@ app.get('/',(req,res)=> {
     }
 })
 
-app.use('/api/v1',userRoutes)
+app.use('/api',userRoutes)
 
 app.listen(PORT,()=> {
     console.log(`Server started and running at ${PORT}`)
