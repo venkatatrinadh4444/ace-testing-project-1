@@ -19,11 +19,38 @@ enum roleSelector {
   Customer
 }
 
-model User {
+model Admin {
   id String @id @default(uuid())
   name String
   email String
   role roleSelector @default(Customer)
   username String
   password String
+  activeStatus Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Vendor {
+  id String @id @default(uuid())
+  name String
+  email String
+  role roleSelector @default(Customer)
+  username String
+  password String
+  activeStatus Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Customer {
+  id String @id @default(uuid())
+  name String
+  email String
+  role roleSelector @default(Customer)
+  username String
+  password String
+  activeStatus Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
