@@ -4,7 +4,7 @@ export const validateEmail=[
     body('email').isEmail().withMessage('Please enter a valid email'),
     body('role').isIn(["Admin","Vendor","Customer"]).withMessage('Please enter a valid role'),
     (req,res,next)=> {
-        const errors=validationResult(req)
+        const errors =validationResult(req)
         if(!errors.isEmpty()) {
             return res.status(400).json({error:errors.array()})
         }
@@ -14,7 +14,6 @@ export const validateEmail=[
 
 export const validateUser=[
     body('password').isLength({min:6}).withMessage('Password must be atleast 6 characters long'),
-    body('role').isIn(["Admin","Vendor","Customer"]).withMessage('Please enter a valid role'),
     (req,res,next)=> {
         const errors=validationResult(req)
         if(!errors.isEmpty()) {

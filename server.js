@@ -2,9 +2,8 @@ import dotenv from 'dotenv'
 import express from 'express'
 import dbConnection from './src/db.js'
 import cors from 'cors'
-import adminRoutes from './src/routes/adminRoutes.js'
-import vendorRoutes from './src/routes/vendorRoutes.js'
-import customerRoutes from './src/routes/customerRoutes.js'
+import cookieParser from 'cookie-parser'
+import userRoutes from './src/routes/userRoutes.js'
 
 const app=express()
 app.use(express.json())
@@ -15,7 +14,8 @@ const PORT=process.env.PORT
 
 dbConnection()
 
-app.use(cors({origin:"*"}))
+app.use(cookieParser())
+app.use(cors({origin:"http://localhost:5173",credentials:true}))
 
 app.get('/',(req,res)=> {
     try {
@@ -25,9 +25,7 @@ app.get('/',(req,res)=> {
     }
 })
 
-app.use('/api/admin',adminRoutes)
-app.use('/api/vendor',vendorRoutes)
-app.use('/api/customer',customerRoutes)
+app.use('/api',userRoutes)
 
 app.listen(PORT,()=> {
     console.log(`Server started and running at ${PORT}`)
