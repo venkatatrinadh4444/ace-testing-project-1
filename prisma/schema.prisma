@@ -22,35 +22,41 @@ enum roleSelector {
 model Admin {
   id String @id @default(uuid())
   name String
-  email String
+  email String @unique
   role roleSelector @default(Customer)
   username String
   password String
   activeStatus Boolean @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  otp Int? 
+  expiresIn BigInt?
 }
 
 model Vendor {
   id String @id @default(uuid())
   name String
-  email String
+  email String @unique
   role roleSelector @default(Customer)
   username String
   password String
   activeStatus Boolean @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  otp Int? 
+  expiresIn BigInt?
 }
 
 model Customer {
   id String @id @default(uuid())
   name String
-  email String
+  email String @unique
   role roleSelector @default(Customer)
   username String
   password String
   activeStatus Boolean @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  otp Int? 
+  expiresIn BigInt?
 }

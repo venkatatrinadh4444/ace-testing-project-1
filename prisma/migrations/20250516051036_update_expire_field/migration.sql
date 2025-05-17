@@ -1,0 +1,8 @@
+-- AlterTable
+ALTER TABLE "Admin" ALTER COLUMN "expiresIn" SET DATA TYPE BIGINT;
+
+-- AlterTable
+ALTER TABLE "Customer" ALTER COLUMN "expiresIn" SET DATA TYPE BIGINT;
+
+-- AlterTable
+ALTER TABLE "Vendor" ALTER COLUMN "expiresIn" SET DATA TYPE BIGINT;
