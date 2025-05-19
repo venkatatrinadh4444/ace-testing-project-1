@@ -333,7 +333,8 @@ export const gettingUserDetails= async (req,res) => {
     if(!user) {
       return res.status(404).json({status:'error',message:'user not found!'})
     }
-    const userDetails={...user,expiresIn:user.expiresIn.toString()}
+    const userDetails={username:user.username,name:user.name,email:user.email,role:user.role,createdAt:user.createdAt,activeStatus:user.activeStatus}
+    
     return res.status(200).json({status:'success',userDetails})
   } catch (err) {
     serverError(res,'fetching user ',err)
