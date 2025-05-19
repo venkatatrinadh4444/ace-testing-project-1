@@ -15,7 +15,7 @@ const PORT=process.env.PORT
 dbConnection()
 
 app.use(cookieParser())
-app.use(cors({origin:"http://localhost:5173",credentials:true}))
+app.use(cors({origin:["https://ace-testing-project-1-frontend.vercel.app","http://localhost:5173"],credentials:true}))
 
 app.get('/',(req,res)=> {
     try {
