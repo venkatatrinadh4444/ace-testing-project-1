@@ -124,7 +124,7 @@ export const loginUser = async (req, res) => {
       maxAge: 60 * 60 * 1000,
     });
 
-    const userDetails={...user,expiresIn:user.expiresIn.toString()}
+    const userDetails={username:user.username,name:user.name,email:user.email,role:user.role,createdAt:user.createdAt,activeStatus:user.activeStatus}
 
     return res
       .status(200)
